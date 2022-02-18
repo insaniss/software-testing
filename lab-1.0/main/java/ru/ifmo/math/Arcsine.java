@@ -13,7 +13,6 @@ public class Arcsine implements Function {
      * <li>If the argument is zero, then the result is a zero with the
      * same sign as the argument.</ul>
      *
-     *
      * @param value the function argument.
      * @param eps the precision.
      * @return the arc sine of the argument.
@@ -27,7 +26,7 @@ public class Arcsine implements Function {
             throw new IllegalArgumentException("Precision too large (or NaN)");
         }
         double result = 0.0, delta = value;
-        int step = 0; value *= value;
+        int step = 0; value *= value; // x := x^2
         do {
             result = result + delta;
             delta = calculateSeriesMember(delta, value, step);
@@ -37,6 +36,7 @@ public class Arcsine implements Function {
         return result;
     }
 
+    /* returns n-th term of the series of the arcsine function */
     private double calculateSeriesMember(double a, double x, double n) {
         return a * x * (n + 0.5) / (n + 1.0) * (n + 0.5) / (n + 1.5);
     }
