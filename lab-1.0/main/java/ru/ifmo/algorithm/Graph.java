@@ -43,18 +43,51 @@ public class Graph<T> {
     /**
      * Creates a connection between two vertices.
      *
-     * @param from a vertex at the "from" end of a directed connection.
+     * @param source a vertex at the "source" end of a directed connection.
      *        The vertex must be added first using {@code #addVertex(T)}.
-     * @param to a vertex at the "to" end of a directed connection. The
-     *        vertex must be added first using {@code #addVertex(T)}.
+     * @param destination a vertex at the "destination" end of a directed connection.
+     *        The vertex must be added first using {@code #addVertex(T)}.
      */
-    public void addEdge(T from, T to) {
-        if (!contains(from)) {
-            addVertex(from);
+    public void addEdge(T source, T destination) {
+        if (!contains(source)) {
+            addVertex(source);
         }
-        if (!contains(to)) {
-            addVertex(to);
+        if (!contains(destination)) {
+            addVertex(destination);
         }
-        adjacencyList.get(from).add(to);
+        adjacencyList.get(source).add(destination);
+    }
+
+    /**
+     * Returns a {@code List} over the vertices reachable from <i>start</i>,
+     * in the order of a depth-first traversal.
+     *
+     * @param graph {@code Graph} representing a graph that may have cycles.
+     * @param start a vertex of type T to start the traversal. It's illegal
+     *        if it's not present. Trying to do so will  throw an
+     *        {@link IllegalArgumentException}.
+     * @return the list over the vertices in order of a depth-first traversal.
+     */
+    public static <T> List<T> depthFirstTraversal(Graph<T> graph,
+                                                  T start) {
+        List<T> vertices = new ArrayList<>(graph.size());
+        if (!graph.contains(start)) {
+            throw new IllegalArgumentException("Vertex is not an element of the graph");
+        } else {
+            depthFirstTraversal(graph, start, vertices);
+        }
+        return vertices;
+    }
+
+    /* A recursive function used by another one */
+    private static <T> void depthFirstTraversal(Graph<T> graph,
+                                                T start,
+        /* mark as visited */                   List<T> vertices) {
+        vertices.add(start);
+        for (T vertex : graph.getAdjacencyList().get(start)) {
+            if (!vertices.contains(vertex)) {
+                depthFirstTraversal(graph, vertex, vertices);
+            }
+        }
     }
 }
