@@ -4,12 +4,9 @@ public class Human {
     private final String name;
     private final Gender gender;
 
-    private HumanState state;
-
     public Human(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
-        this.state = HumanState.NORMAL;
     }
 
     public String getName() {
@@ -19,6 +16,8 @@ public class Human {
     public Gender getGender() {
         return gender;
     }
+
+    private HumanState state = HumanState.NORMAL;
 
     public void feelComfort() {
         this.state = HumanState.COMFORTABLE;
