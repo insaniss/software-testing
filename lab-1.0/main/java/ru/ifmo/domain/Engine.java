@@ -24,4 +24,8 @@ public class Engine {
     public EngineState getState() {
         return state;
     }
+
+    public boolean isDestroyed() {
+        return state == EngineState.DESTROYED;
+    }
 }

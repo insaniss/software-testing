@@ -22,11 +22,23 @@ public class Crew {
         return members;
     }
 
+    public boolean isEmpty() {
+        return members.isEmpty();
+    }
+
     public void addMember(Human human) {
-        this.members.add(human);
+        if (members.contains(human)) {
+            throw new RuntimeException("Human already present in crew");
+        } else {
+            this.members.add(human);
+        }
     }
 
     public void removeMember(Human human) {
-        this.members.remove(human);
+        if (!members.contains(human)) {
+            throw new RuntimeException("Human not present in crew");
+        } else {
+            this.members.remove(human);
+        }
     }
 }
