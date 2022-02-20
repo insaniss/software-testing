@@ -1,11 +1,11 @@
 package ru.ifmo.domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Crew {
-    private final List<Human> members = new ArrayList<>();
+    private final List<Human> members = new LinkedList<>();
 
     public Crew() {
     }
@@ -16,6 +16,10 @@ public class Crew {
 
     public int numberOfMembers() {
         return members.size();
+    }
+
+    public List<Human> getMembers() {
+        return members;
     }
 
     public void addMember(Human human) {
