@@ -1,14 +1,12 @@
 package ru.ifmo.domain;
 
-import static ru.ifmo.domain.HumanState.*;
-
 public class Human {
     private String name;
     private HumanState state;
 
     public Human(String name) {
         this.name = name;
-        this.state = NORMAL;
+        this.state = HumanState.NORMAL;
     }
 
     public void setState(String name) {
@@ -20,15 +18,15 @@ public class Human {
     }
 
     public void feelComfort() {
-        this.state = COMFORTABLE;
+        this.state = HumanState.COMFORTABLE;
     }
 
     public void feelDiscomfort() {
-        this.state = UNCOMFORTABLE;
+        this.state = HumanState.UNCOMFORTABLE;
     }
 
     public void feelNothing() {
-        this.state = NORMAL;
+        this.state = HumanState.NORMAL;
     }
 
     public HumanState getState() {
