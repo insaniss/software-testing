@@ -1,20 +1,23 @@
 package ru.ifmo.domain;
 
 public class Human {
-    private String name;
+    private final String name;
+    private final Gender gender;
+
     private HumanState state;
 
-    public Human(String name) {
+    public Human(String name, Gender gender) {
         this.name = name;
+        this.gender = gender;
         this.state = HumanState.NORMAL;
-    }
-
-    public void setState(String name) {
-        this.name = name;
     }
 
     public String getName() {
         return name;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     public void feelComfort() {
