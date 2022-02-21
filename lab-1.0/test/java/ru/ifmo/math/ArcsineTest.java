@@ -1,63 +1,65 @@
 package ru.ifmo.math;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static java.lang.Double.NaN;
-import static java.lang.Math.*;
+import static java.lang.Math.abs;
+import static java.lang.Math.asin;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ArcsineTest {
-    private static Function arcsine;
+class ArcsineTest {
+
+    private static final Function arcsine = new Arcsine();
 
     private static boolean almostEquals(double x, double y) {
-        return abs(x - y) < 1e-3;
+        return abs(x - y) <= 1e-3;
     }
 
-    @BeforeAll
-    public static void init() {
-        arcsine = new Arcsine();
-    }
-
-    @Test
-    public void test0() {
-        assertThrows(IllegalArgumentException.class, () -> arcsine.apply(0, NaN));
-    }
-
-    @ParameterizedTest
+    @ParameterizedTest(name = "epsilon = {0}")
     @ValueSource(doubles = {
-            -1.00000,
-             0.00000,
-             1.00000
+            -6.20452,
+             0.12365,
+             1.00251,
+             9.99999, NaN
     })
-    public void test1(double value) {
-        assertTrue(almostEquals(asin(value), arcsine.apply(value)));
+    public void testWithInvalidPrecisions(double eps) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            arcsine.apply(0, eps);
+        });
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "value = {0}")
+    @ValueSource(doubles = {
+            -5.09234,
+            -1.00001,
+             2.23454,
+             9.24355, NaN
+    })
+    public void testWithInacceptableRangePoints(double value) {
+        assertEquals(NaN, arcsine.apply(value));
+    }
+
+    @ParameterizedTest(name = "value = {0}")
     @ValueSource(doubles = {
             -0.99923,
             -0.45893,
             -0.10034,
              0.13241,
-             0.32450,
-             0.07549
+             0.32459,
+             0.07549,
     })
-    public void test2(double value) {
+    public void testWithAcceptableRangePoints(double value) {
         assertTrue(almostEquals(asin(value), arcsine.apply(value)));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "value = {0}")
     @ValueSource(doubles = {
-            -5.09234,
-            -1.00001,
-             2.23454,
-             9.24355,
-             NaN
+            -1.00000,
+             0.00000,
+             1.00000,
     })
-    public void test3(double value) {
-        assertEquals(NaN, arcsine.apply(value));
+    public void testWithCriticalPoints(double value) {
+        assertTrue(almostEquals(asin(value), arcsine.apply(value)));
     }
 }

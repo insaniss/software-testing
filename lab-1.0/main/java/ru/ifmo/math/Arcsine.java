@@ -31,7 +31,7 @@ public class Arcsine implements Function {
             result = result + delta;
             delta = calculateSeriesMember(delta, value, step);
             step = step + 1;
-        } while (abs(delta) >= eps);
+        } while (abs(delta) >= abs(eps));
 
         return result;
     }
