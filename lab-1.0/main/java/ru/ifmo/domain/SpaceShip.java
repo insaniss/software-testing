@@ -27,11 +27,11 @@ public class SpaceShip {
      * Gets in a human into the crew.
      *
      * @param human {@code Human} representing a human entity.
-     * @throws RuntimeException if the ship isn't on the ground.
+     * @throws IllegalStateException if the ship isn't on the ground.
      */
     public void getIn(Human human) {
         if (state != SpaceShipState.STANDING) {
-            throw new RuntimeException("Could not get in, cause ship isn't on the ground");
+            throw new IllegalStateException("Could not get in, cause ship isn't on the ground");
         } else {
             this.crew.addMember(human);
         }
@@ -41,11 +41,11 @@ public class SpaceShip {
      * Gets out a human from the crew.
      *
      * @param human {@code Human} representing a human entity.
-     * @throws RuntimeException if the ship isn't on the ground.
+     * @throws IllegalStateException if the ship isn't on the ground.
      */
     public void getOut(Human human) {
         if (state != SpaceShipState.STANDING) {
-            throw new RuntimeException("Could not get out, cause ship isn't on the ground");
+            throw new IllegalStateException("Could not get out, cause ship isn't on the ground");
         } else {
             this.crew.removeMember(human);
         }
@@ -55,11 +55,11 @@ public class SpaceShip {
      * Sets a new engine to the {@code Spaceship}.
      *
      * @param engine {@code Engine} representing a spaceship engine.
-     * @throws RuntimeException - if the ship isn't on the ground.
+     * @throws IllegalStateException if the ship isn't on the ground.
      */
     public void setEngine(Engine engine) {
         if (state != SpaceShipState.STANDING) {
-            throw new RuntimeException("Could not set engine, cause ship isn't on the ground");
+            throw new IllegalStateException("Could not set engine, cause ship isn't on the ground");
         } else {
             this.engine = engine;
         }
@@ -68,16 +68,16 @@ public class SpaceShip {
     /**
      * Sets the spaceship state as {@code FLYING}.
      *
-     * @throws RuntimeException cases: <ul><li>if the ship is already flying.
+     * @throws IllegalStateException cases: <ul><li>if the ship is already flying.
      *         <li>if a crew is empty.<li>if the ship engine is destroyed.</ul>
      */
     public void fly() {
         if (state == SpaceShipState.FLYING) {
-            throw new RuntimeException("Spaceship is already flying");
+            throw new IllegalStateException("Spaceship is already flying");
         } else if (crew.isEmpty()) {
-            throw new RuntimeException("Spaceship cannot fly without a crew");
+            throw new IllegalStateException("Spaceship cannot fly without a crew");
         } else if (engine.isDestroyed()) {
-            throw new RuntimeException("Spaceship cannot with a destroyed engine");
+            throw new IllegalStateException("Spaceship cannot with a destroyed engine");
         } else {
             this.state = SpaceShipState.FLYING;
         }
@@ -86,11 +86,11 @@ public class SpaceShip {
     /**
      * Sets the spaceship state as {@code LANDING}.
      *
-     * @throws RuntimeException if the ship is already on the ground.
+     * @throws IllegalStateException if the ship is already on the ground.
      */
     public void land() {
         if (state == SpaceShipState.STANDING) {
-            throw new RuntimeException("Spaceship is already on the ground");
+            throw new IllegalStateException("Spaceship is already on the ground");
         } else {
             this.state = SpaceShipState.STANDING;
         }

@@ -28,7 +28,7 @@ public class Crew {
 
     public void addMember(Human human) {
         if (members.contains(human)) {
-            throw new RuntimeException("Human already present in crew");
+            throw new IllegalArgumentException("Human already present in crew");
         } else {
             this.members.add(human);
         }
@@ -36,7 +36,7 @@ public class Crew {
 
     public void removeMember(Human human) {
         if (!members.contains(human)) {
-            throw new RuntimeException("Human not present in crew");
+            throw new IllegalArgumentException("Human not present in crew");
         } else {
             this.members.remove(human);
         }
