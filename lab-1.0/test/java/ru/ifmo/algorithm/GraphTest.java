@@ -21,7 +21,7 @@ class GraphTest {
 
     @BeforeEach
     void setUp() {
-        graph = new Graph<>();
+        this.graph = new Graph<>();
     }
 
     private Scanner getScanner(String path) throws FileNotFoundException {
@@ -33,7 +33,7 @@ class GraphTest {
             files = "lab-1.0/test/resources/paths.csv",
             numLinesToSkip = 1
     )
-    public void testDepthFirstTraversal(String inPath, String outPath)
+    void testDepthFirstTraversal(String inPath, String outPath)
             throws FileNotFoundException {
 
         final var in = getScanner(inPath);
@@ -60,7 +60,7 @@ class GraphTest {
             "someVertex",
             "1"
     })
-    public void testDepthFirstTraversalWithThrowingIllegalArgumentException(String startVertex) {
+    void testDepthFirstTraversalWithThrowingIllegalArgumentException(String startVertex) {
         assertThrows(IllegalArgumentException.class, () -> depthFirstTraversal(graph, startVertex));
     }
 
@@ -72,7 +72,7 @@ class GraphTest {
             "singleVertex",
             "999"
     })
-    public void testAddVertexWithThrowingIllegalArgumentException(String vertex) {
+    void testAddVertexWithThrowingIllegalArgumentException(String vertex) {
         assertThrows(IllegalArgumentException.class, () -> {
             graph.addVertex(vertex); graph.addVertex(vertex);
         });

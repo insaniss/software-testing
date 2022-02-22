@@ -9,7 +9,6 @@ import static java.lang.Math.asin;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArcsineTest {
-
     private static final Function arcsine = new Arcsine();
 
     private static boolean almostEquals(double x, double y) {
@@ -23,7 +22,7 @@ class ArcsineTest {
              1.00251,
              9.99999, NaN
     })
-    public void testWithInvalidPrecisions(double eps) {
+    void testWithInvalidPrecisions(double eps) {
         assertThrows(IllegalArgumentException.class, () -> {
             arcsine.apply(0, eps);
         });
@@ -36,7 +35,7 @@ class ArcsineTest {
              2.23454,
              9.24355, NaN
     })
-    public void testWithInacceptableRangePoints(double value) {
+    void testWithInacceptableRangePoints(double value) {
         assertEquals(NaN, arcsine.apply(value));
     }
 
@@ -49,7 +48,7 @@ class ArcsineTest {
              0.32459,
              0.07549,
     })
-    public void testWithAcceptableRangePoints(double value) {
+    void testWithAcceptableRangePoints(double value) {
         assertTrue(almostEquals(asin(value), arcsine.apply(value)));
     }
 
@@ -59,7 +58,7 @@ class ArcsineTest {
              0.00000,
              1.00000,
     })
-    public void testWithCriticalPoints(double value) {
+    void testWithCriticalPoints(double value) {
         assertTrue(almostEquals(asin(value), arcsine.apply(value)));
     }
 }
