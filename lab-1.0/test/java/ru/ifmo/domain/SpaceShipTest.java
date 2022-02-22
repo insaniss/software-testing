@@ -58,7 +58,7 @@ class SpaceShipTest {
     }
 
     @Test
-    void test() {
+    void testFlyMethodWithEmptyCrewAndDestroyedEngine() {
         var exception = IllegalStateException.class;
         assertAll(
           () -> assertThrows(exception, () -> ship.fly()),
