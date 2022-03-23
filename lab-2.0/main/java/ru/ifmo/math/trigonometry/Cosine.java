@@ -1,6 +1,6 @@
 package ru.ifmo.math.trigonometry;
 
-import static java.lang.Math.PI;
+import static java.lang.Math.*;
 
 public class Cosine implements TrigonometricFunction {
     private final TrigonometricFunction sin;

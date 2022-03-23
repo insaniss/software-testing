@@ -5,7 +5,7 @@ import ru.ifmo.math.logarithms.NaturalLogarithm;
 import ru.ifmo.math.trigonometry.Cotangent;
 import ru.ifmo.math.trigonometry.Tangent;
 
-import static java.lang.Math.pow;
+import static java.lang.Math.*;
 import static ru.ifmo.math.logarithms.Base.*;
 
 public class ComplexFunction implements Function {
@@ -23,12 +23,11 @@ public class ComplexFunction implements Function {
 
     @Override
     public double apply(double value, double eps) {
-        if (value < 0) {
+        if (value <= 0) {
             return cot.apply(value, eps) + tan.apply(value, eps);
         } else {
-            return pow(ln.apply(value, eps) * lg.apply(value, eps)
-                    * log5.apply(value, eps) * log3.apply(value, eps)
-                    - lg.apply(value, eps) * lg.apply(value, eps), 3);
+            return pow(ln.apply(value, eps) * lg.apply(value, eps) * log5.apply(value, eps)
+                    * log3.apply(value, eps) - pow(lg.apply(value, eps), 2), 3);
         }
     }
 }
