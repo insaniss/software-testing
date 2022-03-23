@@ -19,7 +19,7 @@ public class Tangent implements TrigonometricFunction {
      *
      * @param value the function argument.
      * @param eps the precision.
-     * @return the tangent if the argument.
+     * @return the tangent of the argument.
      */
     @Override
     public double apply(double value, double eps) {

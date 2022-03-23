@@ -22,6 +22,6 @@ public interface Function {
      * @return the function result.
      */
     default double apply(double value) {
-        return apply(value, 1E-9);
+        return apply(value, 1E-18);
     }
 }

@@ -22,6 +22,9 @@ public class Sine implements TrigonometricFunction {
         if (isNaN(value) || isInfinite(value)) {
             return NaN;
         }
+        if (isNaN(eps) || abs(eps) > 1E-6) {
+            throw new IllegalArgumentException("Precision to large (or NaN)");
+        }
         /* simplifying the value */
         value = value % (2 * PI);
 
