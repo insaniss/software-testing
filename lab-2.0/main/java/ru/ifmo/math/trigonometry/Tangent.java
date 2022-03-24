@@ -1,8 +1,8 @@
 package ru.ifmo.math.trigonometry;
 
 public class Tangent implements TrigonometricFunction {
-    private final TrigonometricFunction sin;
-    private final TrigonometricFunction cos;
+    private final Sine sin;
+    private final Cosine cos;
 
     public Tangent() {
         this.sin = new Sine();

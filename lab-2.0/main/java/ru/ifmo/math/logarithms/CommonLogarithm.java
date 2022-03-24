@@ -1,7 +1,7 @@
 package ru.ifmo.math.logarithms;
 
 public class CommonLogarithm implements Logarithm {
-    private final Logarithm ln;
+    private final NaturalLogarithm ln;
     private final Base base;
 
     public CommonLogarithm(Base base) {

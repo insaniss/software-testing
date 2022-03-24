@@ -1,7 +1,7 @@
 package ru.ifmo.math.logarithms;
 
 public class BinaryLogarithm implements Logarithm {
-    private final Logarithm log;
+    private final CommonLogarithm log;
 
     public BinaryLogarithm() {
         this.log = new CommonLogarithm(Base.BASE_TWO);
