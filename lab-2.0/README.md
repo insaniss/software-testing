@@ -5,7 +5,7 @@
 Вариант: 200001
 
 ```text
-x <= 0 : cos(x) + tan(x)
+x <= 0 : cot(x) + tan(x)
 x  > 0 : ((((ln(x) * log10(x)) * log5(x)) * log3(x)) - (log10(x) * log10(x)))^3
 ```
 
