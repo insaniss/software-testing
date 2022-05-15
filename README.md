@@ -42,7 +42,7 @@ Optionally run one more command to start Selenoid UI:
 
 Create `browsers.json` configuration file with content:
 
-__browsers.json__
+_browsers.json_
 ```json
 {
   "chrome": {
