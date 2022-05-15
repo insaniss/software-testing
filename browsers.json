@@ -1,23 +1,64 @@
 {
-  "firefox": {
-    "default": "latest",
+  "chrome": {
+    "default": "101.0",
     "versions": {
-      "latest": {
-        "image": "selenoid/firefox",
+      "101.0": {
+        "image": "selenoid/chrome:101.0",
         "port": "4444",
-        "path": "/wd/hub",
-        "tmpfs": {"/tmp": "size=256m"}
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=256m"
+        }
+      },
+      "100.0": {
+        "image": "selenoid/chrome:100.0",
+        "port": "4444",
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=256m"
+        }
       }
     }
   },
-  "chrome": {
-    "default": "latest",
+  "firefox": {
+    "default": "100.0",
     "versions": {
-      "latest": {
-        "image": "selenoid/chrome",
+      "100.0": {
+        "image": "selenoid/firefox:100.0",
+        "port": "4444",
+        "path": "/wd/hub",
+        "tmpfs": {
+          "/tmp": "size=256m"
+        }
+      },
+      "99.0": {
+        "image": "selenoid/firefox:99.0",
+        "port": "4444",
+        "path": "/wd/hub",
+        "tmpfs": {
+          "/tmp": "size=256m"
+        }
+      }
+    }
+  },
+  "opera": {
+    "default": "86.0",
+    "versions": {
+      "86.0": {
+        "image": "selenoid/opera:86.0",
         "port": "4444",
         "path": "/",
-        "tmpfs": {"/tmp": "size=256m"}
+        "tmpfs": {
+          "/tmp": "size=256m"
+        }
+      },
+      "85.0": {
+        "image": "selenoid/opera:85.0",
+        "port": "4444",
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=256m"
+        }
       }
     }
   }
