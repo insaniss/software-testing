@@ -10,11 +10,11 @@ class SelenoidExtension : BeforeAllCallback {
     private val props = Properties()
 
     override fun beforeAll(content: ExtensionContext?) {
-        props.load(this::class.java.classLoader.getResourceAsStream("selenide.properties"))
+        props.load(this::class.java.classLoader.getResourceAsStream("selenoid.properties"))
 
-        remote = this.props.getProperty("selenide.remote")
-        browser = this.props.getProperty("selenide.browser")
-        browserVersion = this.props.getProperty("selenide.browser-version")
+        remote = this.props.getProperty("selenoid.remote")
+        browser = this.props.getProperty("selenoid.browser")
+        browserVersion = this.props.getProperty("selenoid.browser-version")
 
         browserCapabilities.setCapability("selenoid:options", mapOf("enableVNC" to true, "enableVideo" to true))
     }
