@@ -10,7 +10,7 @@ class SelenoidExtension : BeforeAllCallback {
     private val props = Properties()
 
     override fun beforeAll(content: ExtensionContext?) {
-        props.load(this::class.java.classLoader.getResourceAsStream("selenoid.properties"))
+        props.load(this::class.java.classLoader.getResourceAsStream("config.properties"))
 
         remote = this.props.getProperty("selenoid.remote")
         baseUrl = this.props.getProperty("selenoid.base-url")

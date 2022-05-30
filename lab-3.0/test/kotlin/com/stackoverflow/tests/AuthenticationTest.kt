@@ -192,6 +192,7 @@ class AuthenticationTest {
                 .shouldBe(visible)
         }
 
+        @Disabled
         @DisplayName("Test with valid credentials")
         @ParameterizedTest(name = "display name: {0}, email: {1}, password: {2}")
         @Order(6)
