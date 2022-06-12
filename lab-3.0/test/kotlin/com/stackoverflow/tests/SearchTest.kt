@@ -51,7 +51,7 @@ class SearchTest {
     @ParameterizedTest(name = "user: {0}")
     @ValueSource(strings = [
         "alex",
-        "insanis",
+        "octoant",
         "maestro"
     ])
     internal fun testSearchedUserFound(user: String) {
@@ -68,7 +68,7 @@ class SearchTest {
     @ParameterizedTest(name = "user: {0}")
     @ValueSource(strings = [
         "bimboad",
-        "insanisas",
+        "octoantas",
         "maestrooo"
     ])
     internal fun testSearchedUserNotFound(user: String) {
